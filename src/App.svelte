@@ -22,6 +22,7 @@
     display: flex;
     align-content: space-between;
     max-width: 40%;
+    align-items: flex-start;
   }
 
   @media only screen and (max-width: 600px) {

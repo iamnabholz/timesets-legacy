@@ -1,22 +1,27 @@
 <script>
-
+  import Timer from "./Timer.svelte";
 </script>
 
 <style>
   main {
-    padding: 1em;
     text-align: center;
-    height: auto;
   }
 
-  .time-text {
-    font-size: 2em;
-    font-weight: 400;
+  .timers-header {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 </style>
 
 <main class="card">
-  <p>7 Timers</p>
-  <button>+ New Timer</button>
-  <p class="time-text">15:00</p>
+  <section class="timers-header">
+    <p>7 Timers</p>
+    <button>+ New Timer</button>
+  </section>
+  <Timer />
+  <Timer />
+  <Timer />
+  <Timer />
 </main>
