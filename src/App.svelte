@@ -1,6 +1,7 @@
 <script>
   import Controller from "./components/Controller.svelte";
   import List from "./components/List.svelte";
+  import Settings from "./components/Settings.svelte";
 </script>
 
 <style>
@@ -17,25 +18,55 @@
     padding-bottom: 0.5em;
   }
 
+  .app-container {
+    display: grid;
+    grid-template-columns: 50%;
+    justify-content: center;
+  }
+
   .app {
-    margin: 0 auto;
     display: flex;
-    align-content: space-between;
-    max-width: 40%;
     align-items: flex-start;
   }
 
-  @media only screen and (max-width: 600px) {
+  .controls {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 0.4em;
+  }
+
+  @media only screen and (max-width: 1680px) {
+    .app-container {
+      grid-template-columns: 75%;
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .app-container {
+      grid-template-columns: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
     .app {
-      width: 80%;
+      flex-direction: column;
+    }
+    .controls {
+      margin-right: 0;
     }
   }
 </style>
 
 <main>
   <h1>TIMESETS</h1>
-  <div class="app">
-    <Controller />
-    <List />
+  <div class="app-container">
+    <section class="app">
+      <section class="controls">
+        <Controller />
+        <!-- <Settings /> -->
+      </section>
+      <List />
+    </section>
   </div>
 </main>
