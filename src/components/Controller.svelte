@@ -36,6 +36,7 @@
     $controller[0].id = null;
     $controller[0].running = false;
     currentId = 0;
+    paused = false;
   }
 
   timer.on("tick", ms => {
