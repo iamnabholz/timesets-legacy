@@ -5,6 +5,8 @@
   import { timers } from "../store.js";
 
   let shown = false;
+  let form;
+  let valid;
 
   export function show() {
     shown = true;
@@ -12,6 +14,8 @@
 
   function cancel() {
     shown = false;
+
+    //reset();
   }
 
   function save() {
@@ -20,19 +24,23 @@
     const timer = {
       id: id,
       name: name,
-      time: time,
+      time: parseInt(time, 10),
       completed: false
     };
 
     timers.modify(timer);
 
-    reset();
+    //reset();
   }
 
   function reset() {
     id = null;
     name = "";
     time = 15;
+  }
+
+  function validate() {
+    valid = form.reportValidity();
   }
 
   export let id = null;
@@ -86,7 +94,7 @@
 
   @media only screen and (max-width: 580px) {
     .modal {
-      width: 90%;
+      width: 80%;
     }
   }
 </style>
@@ -100,33 +108,45 @@
       class="modal card"
       in:fly={{ y: 200, duration: 250, delay: 50, easing: expoOut }}
       out:fly={{ y: 200, duration: 250, easing: expoOut }}>
-      <form>
+      <form id="timer-form" bind:this={form}>
         <h1>Setting Timer</h1>
         <label for="name">Timer Name</label>
         <input
           required
+          autocomplete="off"
           name="name"
           type="text"
+          pattern=".*\S+.*"
           bind:value={name}
+          on:keyup={() => {
+            validate();
+          }}
           minlength="1"
-          maxlength="24"
+          maxlength="32"
           placeholder="Design, Break, Research..."
-          title="Timer Name" />
+          title="Name can´t be empty." />
 
         <label for="number">Timer Duration (1-60)</label>
         <input
           required
+          autocomplete="off"
           name="number"
-          type="number"
+          type="text"
+          pattern="[1-9]|[0-5][0-9]|60\d*"
           bind:value={time}
-          min="1"
-          max="60"
+          on:keyup={() => {
+            validate();
+          }}
+          maxlength="2"
           placeholder="Time in minutes"
-          title="Timer Duration" />
+          title="Number between 1 and 60." />
 
         <section class="buttons">
           <button type="reset" on:click|once={cancel}>Cancel</button>
-          <button type="submit" on:click|once|preventDefault={save}>
+          <button
+            disabled={!valid}
+            type="submit"
+            on:click|once|preventDefault={save}>
             Save
           </button>
         </section>

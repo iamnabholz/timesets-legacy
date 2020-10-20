@@ -46,14 +46,13 @@
   timer.on("done", () => {
     // flash or whatever xd
     $timers[currentId].completed = true;
+    currentId = currentId + 1;
 
     if (currentId < $timers.length) {
-      currentId = currentId + 1;
+      start();
     } else {
-      currentId = 0;
+      stop();
     }
-
-    start();
   });
 
   timer.on("statusChanged", status => ($controller[0].status = status));

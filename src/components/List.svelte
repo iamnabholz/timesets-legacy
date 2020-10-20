@@ -28,23 +28,21 @@
     return number;
   }
 
-  function getTime() {
-    let result = $timers.map(a => a.time);
+  $: timeMap = $timers.map(a => a.time);
+  $: getTime(timeMap);
+  let text = "";
+
+  function getTime(result) {
     result = result.reduce((a, b) => a + b, 0);
-    let text = "";
-    if (result < 60) {
-      text = result + " Minutes";
+    if (result <= 60) {
+      text = result + " Minute(s)";
     } else if (result > 60) {
       let hours = result / 60;
       let rhours = Math.floor(hours);
       let minutes = (hours - rhours) * 60;
       let rminutes = Math.round(minutes);
-      text =
-        rhours +
-        (rhours > 1 ? " Hours " : " Hour ") +
-        (rminutes > 1 ? +" Minutes" : " Minute");
+      text = rhours + " Hour(s) " + rminutes + " Minute(s)";
     }
-    return text;
   }
 </script>
 
@@ -99,7 +97,7 @@
   <section class="list-info">
     {#if $timers.length != 0}
       <p>{$timers.length} Timers</p>
-      <p>{getTime()}</p>
+      <p>{text}</p>
     {:else}
       <p>You don't have any timers yet.</p>
     {/if}
