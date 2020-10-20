@@ -2,6 +2,19 @@
   import Controller from "./components/Controller.svelte";
   import List from "./components/List.svelte";
   import Settings from "./components/Settings.svelte";
+
+  import { controller } from "./store.js";
+
+  function beforeUnload() {
+    if ($controller[0].running == true) {
+      // Cancel the event as stated by the standard.
+      event.preventDefault();
+      // Chrome requires returnValue to be set.
+      event.returnValue = "";
+      // more compatibility
+      return "...";
+    }
+  }
 </script>
 
 <style>
@@ -20,7 +33,7 @@
 
   .app-container {
     display: grid;
-    grid-template-columns: 50%;
+    grid-template-columns: 60%;
     justify-content: center;
   }
 
@@ -33,7 +46,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-right: 0.4em;
+    margin-right: 0.8em;
   }
 
   @media only screen and (max-width: 1680px) {
@@ -42,7 +55,7 @@
     }
   }
 
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 1050px) {
     .app-container {
       grid-template-columns: 100%;
     }
@@ -70,3 +83,5 @@
     </section>
   </div>
 </main>
+
+<svelte:window on:beforeunload={beforeUnload} />

@@ -39,7 +39,7 @@ function timerStore() {
                     state[index] = data;
                 }
 
-                console.log(state);
+                //console.log(state);
 
                 return state;
             });
@@ -48,7 +48,7 @@ function timerStore() {
             update(state => {
                 state = state.filter(state => state.id != id);
 
-                console.log(state);
+                //console.log(state);
 
                 return state;
             });
@@ -68,6 +68,7 @@ export const timers = timerStore();
 export const controller = writable([
     {
     id: null,
-    running: false
+    running: false,
+    status: "stopped"
 }
 ]);

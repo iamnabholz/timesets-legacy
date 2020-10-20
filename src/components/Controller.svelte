@@ -2,8 +2,6 @@
   import Timer from "tiny-timer";
   import { timers, controller } from "../store.js";
 
-  import { PlayIcon, PauseIcon, StopIcon } from "svelte-mono-icons";
-
   const timer = new Timer();
 
   let title = "--------";
@@ -57,6 +55,8 @@
     start();
   });
 
+  timer.on("statusChanged", status => ($controller[0].status = status));
+
   function timeAdapter(ms) {
     var minutes = Math.floor(ms / 60000);
     var seconds = ((ms % 60000) / 1000).toFixed(0);
@@ -80,15 +80,12 @@
   }
 
   .actions {
-    display: flex;
-    width: 162px;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
     padding-top: 0.4em;
-  }
-
-  .actions button {
-    background-color: transparent;
-    padding: 0;
-    border: 0;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
   }
 
   h1 {
@@ -105,26 +102,44 @@
   :global(.accent path) {
     fill: #f15252 !important;
   }
+
+  .blink {
+    animation: blinker 2s ease-in-out infinite;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
 </style>
 
 <main class="card">
   <h1>{title}</h1>
-  <p class="time-text">{currentTime}</p>
+  <p class="time-text" class:blink={paused}>{currentTime}</p>
 
   <section class="actions">
-    <button
-      class="stop"
+    <input
       disabled={$controller[0].running == true ? false : true}
-      on:click={stop}>
-      <StopIcon size="38" />
-    </button>
-    <button on:click={start}>
-      {#if $controller[0].running == true && paused == false}
-        <PauseIcon size="86" class="accent" />
-      {:else}
-        <PlayIcon size="86" class="accent" />
-      {/if}
-    </button>
+      type="image"
+      on:click={stop}
+      src="/icons/stop-active.svg"
+      alt="Stop timer." />
+
+    {#if $controller[0].running == true && paused == false}
+      <input
+        type="image"
+        on:click={start}
+        src="/icons/pause.svg"
+        alt="Pause timer." />
+    {:else}
+      <input
+        type="image"
+        on:click={start}
+        src="/icons/start.svg"
+        alt="Start or resume timer." />
+    {/if}
+
   </section>
 </main>
 

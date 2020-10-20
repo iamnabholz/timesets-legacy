@@ -51,6 +51,10 @@ input:disabled {
 	color: #ccc;
 }
 
+input[type="image"] {
+	border: none;
+}
+
 button {
 	color: #FFFFFF;
 	background-color: #F15252;
@@ -73,7 +77,7 @@ button:focus {
 }
 
 .card {
-	margin: .2em;
+	margin: .4em 0;
 	width: 100%;
 	border-radius: 2;
 	-webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);

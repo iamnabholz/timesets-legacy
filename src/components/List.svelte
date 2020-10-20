@@ -28,9 +28,7 @@
     return number;
   }
 
-  let total = updateTime();
-
-  function updateTime() {
+  function getTime() {
     let result = $timers.map(a => a.time);
     result = result.reduce((a, b) => a + b, 0);
     let text = "";
@@ -62,10 +60,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
   }
 
   .list-info {
-    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    border-top: 1px solid #e5e5e5;
   }
 
   @media only screen and (max-width: 800px) {
@@ -77,10 +81,8 @@
 
 <main class="card">
   <section class="timers-header">
-    <section class="list-info">
-      <p>{$timers.length} Timers</p>
-      <p>{total}</p>
-    </section>
+
+    <p>{$controller[0].status}</p>
 
     <button
       disabled={$controller[0].running}
@@ -93,6 +95,16 @@
   {#each $timers as timer (timer.id)}
     <Timer {...timer} />
   {/each}
+
+  <section class="list-info">
+    {#if $timers.length != 0}
+      <p>{$timers.length} Timers</p>
+      <p>{getTime()}</p>
+    {:else}
+      <p>You don't have any timers yet.</p>
+    {/if}
+
+  </section>
 </main>
 
 <Modal bind:this={modal} id={timerId} name={''} time={20} />

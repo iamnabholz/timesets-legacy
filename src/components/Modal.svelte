@@ -12,8 +12,6 @@
 
   function cancel() {
     shown = false;
-
-    reset();
   }
 
   function save() {
@@ -60,8 +58,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fefefe;
-    padding: 2em 3em;
-    width: auto;
+    padding: 2em 2em;
+    border-radius: 2;
+    width: 380px;
   }
 
   h1 {
@@ -74,7 +73,7 @@
   }
 
   input {
-    width: 400px;
+    width: 100%;
   }
 
   .buttons {
@@ -83,6 +82,12 @@
 
   button {
     min-width: 100px;
+  }
+
+  @media only screen and (max-width: 580px) {
+    .modal {
+      width: 90%;
+    }
   }
 </style>
 

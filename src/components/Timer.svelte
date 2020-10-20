@@ -41,7 +41,7 @@
   }
 
   .active {
-    background-color: #e5e5e5;
+    background-color: #fff4f4;
     font-weight: bold;
   }
 
@@ -68,7 +68,12 @@
   class:completed
   transition:slide={{ easing: expoInOut }}>
   <section class="title">
-    <p>{name}</p>
+
+    {#if $controller[0].running && $controller[0].id == id}
+      <p>> {name}</p>
+    {:else}
+      <p>{name}</p>
+    {/if}
 
     {#if $controller[0].running == false}
       <section class="actions" transition:slide={{ y: 20, duration: 200 }}>
