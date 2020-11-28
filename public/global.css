@@ -61,6 +61,7 @@ button {
 	border-radius: 5px;
 	padding: .5em 1em .5em 1em;
 	outline: none;
+	cursor: pointer;
 }
 
 button:disabled {

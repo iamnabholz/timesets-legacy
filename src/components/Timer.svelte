@@ -77,10 +77,13 @@
 
     {#if $controller[0].running == false}
       <section class="actions" transition:slide={{ y: 20, duration: 200 }}>
-        <button class="action" on:click={edit}>
+        <button aria-label="Edit Timer" class="action" on:click={edit}>
           <EditIcon size="18" />
         </button>
-        <button class="action" on:click={() => remove(id)}>
+        <button
+          aria-label="Delete Timer"
+          class="action"
+          on:click={() => remove(id)}>
           <DeleteIcon size="18" class="accent" />
         </button>
       </section>
