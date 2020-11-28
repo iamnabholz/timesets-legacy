@@ -58,8 +58,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-transform: uppercase;
-    font-weight: bold;
+    text-transform: capitalize;
+    font-weight: 400;
   }
 
   .list-info {
@@ -67,7 +67,13 @@
     align-items: center;
     justify-content: space-between;
     padding: 1em;
-    border-top: 1px solid #e5e5e5;
+    color: gray;
+  }
+
+  .line-separator {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(130, 130, 130, 0.1);
   }
 
   @media only screen and (max-width: 800px) {
@@ -85,15 +91,17 @@
     <button
       disabled={$controller[0].running}
       on:click|preventDefault={newTimer}>
-      + New Timer
+      ADD NEW +
     </button>
 
   </section>
 
   {#each $timers as timer (timer.id)}
+    <div class="line-separator" />
     <Timer {...timer} />
   {/each}
 
+  <div class="line-separator" />
   <section class="list-info">
     {#if $timers.length != 0}
       <p>{$timers.length} Timers</p>

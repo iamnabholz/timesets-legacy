@@ -4,8 +4,8 @@
 
   const timer = new Timer();
 
-  let title = "--------";
-  let currentTime = "00:00";
+  let title = "timer";
+  let currentTime = "--:--";
   let currentId = 0;
   let iconToShow = "start";
 
@@ -94,9 +94,9 @@
   }
 
   h1 {
-    color: #333333;
     font-size: 2em;
     font-weight: 600;
+    min-height: 1em;
   }
 
   .time-text {

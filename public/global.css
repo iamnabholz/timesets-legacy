@@ -59,13 +59,16 @@ button {
 	color: #FFFFFF;
 	background-color: #F15252;
 	border-radius: 5px;
-	padding: .5em 1em .5em 1em;
+	padding: .6em 1.2em .6em 1.2em;
 	outline: none;
+	border: none;
 	cursor: pointer;
+	font-weight: 600;
+	text-transform: uppercase;
 }
 
 button:disabled {
-	color: #C4C4C4;
+	color: #e4e4e4;
 	background-color: #868686;
 }
 
@@ -88,4 +91,18 @@ button:focus {
 
 .time-text {
 	font-family: 'Open Sans', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		color: #eee;
+		background-color: #121212;
+	}
+
+	.card {
+		background-color: #282828;
+		-webkit-box-shadow: 0px 0px 6px 0px rgba(240, 240, 240, 0.1);
+		-moz-box-shadow: 0px 0px 6px 0px rgba(240, 240, 240, 0.1);
+		box-shadow: 0px 0px 6px 0px rgba(240, 240, 240, 0.1);
+	}
 }

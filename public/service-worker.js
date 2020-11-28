@@ -9,6 +9,7 @@ var filesToCache = [
     "/build/bundle.css",
     "/icons/pause.svg",
     "/icons/start.svg",
+    "/icons/stop-active.svg",
     "https://fonts.googleapis.com/css2?family=Open+Sans&family=Manrope:wght@400;600;700&display=swap"
 ];
 

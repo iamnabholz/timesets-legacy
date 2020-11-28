@@ -31,7 +31,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid #e5e5e5;
     padding: 1em;
     height: 50px;
   }
@@ -59,6 +58,12 @@
     padding: 0.35em 0.35em 0 0;
     background-color: transparent;
     border: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .active {
+      background-color: #202020;
+    }
   }
 </style>
 
