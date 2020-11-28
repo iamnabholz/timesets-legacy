@@ -4,6 +4,7 @@ var filesToCache = [
     "/",
     "/index.html",
     "/global.css",
+    "/main.js",
     "/build/bundle.js",
     "/build/bundle.css",
     "/icons/pause.svg",
