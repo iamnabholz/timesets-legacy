@@ -91,7 +91,7 @@
     <button
       disabled={$controller[0].running}
       on:click|preventDefault={newTimer}>
-      ADD NEW +
+      ADD NEW
     </button>
 
   </section>

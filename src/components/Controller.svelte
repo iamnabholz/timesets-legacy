@@ -4,8 +4,8 @@
 
   const timer = new Timer();
 
-  let title = "timer";
-  let currentTime = "--:--";
+  let title = "";
+  let currentTime = "00:00";
   let currentId = 0;
   let iconToShow = "start";
 
@@ -35,7 +35,7 @@
 
   function stop() {
     timer.stop();
-    title = "--------";
+    title = "";
     currentTime = "00:00";
     $controller[0].id = null;
     $controller[0].running = false;
@@ -93,10 +93,22 @@
     width: 200px;
   }
 
+  .timer-title {
+    min-height: 3.2em;
+    display: flex;
+    align-items: center;
+  }
+
   h1 {
     font-size: 2em;
     font-weight: 600;
-    min-height: 1em;
+  }
+
+  h3 {
+    opacity: 0.6;
+    font-style: italic;
+    font-size: 1.4em;
+    font-weight: 400;
   }
 
   .time-text {
@@ -120,7 +132,14 @@
 </style>
 
 <main class="card">
-  <h1>{title}</h1>
+  <div class="timer-title">
+    {#if title !== '' && title !== null}
+      <h1>{title}</h1>
+    {:else}
+      <h3>Start Timeset</h3>
+    {/if}
+  </div>
+
   <p class="time-text" class:blink={paused}>{currentTime}</p>
 
   <section class="actions">

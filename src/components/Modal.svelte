@@ -97,6 +97,11 @@
       width: 80%;
     }
   }
+  @media (prefers-color-scheme: dark) {
+    .modal {
+      background-color: #282828;
+    }
+  }
 </style>
 
 {#if shown}
