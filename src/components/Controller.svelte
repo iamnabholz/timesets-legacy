@@ -7,6 +7,7 @@
   let title = "--------";
   let currentTime = "00:00";
   let currentId = 0;
+  let iconToShow = "start";
 
   let paused = false;
 
@@ -19,12 +20,15 @@
         timer.start(time * 60000, 1000);
         $controller[0].id = $timers[currentId].id;
         $controller[0].running = true;
+        iconToShow = "pause";
       } else if (timer.status == "running") {
         paused = true;
+        iconToShow = "start";
         timer.pause();
       } else if (timer.status == "paused") {
         paused = false;
         timer.resume();
+        iconToShow = "pause";
       }
     }
   };
@@ -37,6 +41,7 @@
     $controller[0].running = false;
     currentId = 0;
     paused = false;
+    iconToShow = "start";
   }
 
   timer.on("tick", ms => {
@@ -126,19 +131,11 @@
       src="/icons/stop-active.svg"
       alt="Stop timer." />
 
-    {#if $controller[0].running == true && paused == false}
-      <input
-        type="image"
-        on:click={start}
-        src="/icons/pause.svg"
-        alt="Pause timer." />
-    {:else}
-      <input
-        type="image"
-        on:click={start}
-        src="/icons/start.svg"
-        alt="Start or resume timer." />
-    {/if}
+    <input
+      type="image"
+      on:click={start}
+      src={'/icons/' + iconToShow + '.svg'}
+      alt="Start or pause timer." />
 
   </section>
 </main>
