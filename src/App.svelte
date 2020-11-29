@@ -5,6 +5,7 @@
 
   import { controller } from "./store.js";
 
+  //ASK USER TO CONFIRM IF THEY WANT TO RELOAD A PAGE WHEN THE TIMER IS RUNNING
   function beforeUnload() {
     if ($controller[0].running == true) {
       // Cancel the event as stated by the standard.
@@ -28,7 +29,7 @@
     text-transform: uppercase;
     font-size: 2em;
     font-weight: 800;
-    padding-bottom: 0.5em;
+    padding: 0.6em 0;
   }
 
   .app-container {
@@ -77,7 +78,9 @@
     <section class="app">
       <section class="controls">
         <Controller />
-        <!-- <Settings /> -->
+        {#if 'Notification' in window}
+          <Settings />
+        {/if}
       </section>
       <List />
     </section>

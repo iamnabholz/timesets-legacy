@@ -1,4 +1,6 @@
 <script>
+  import { showNotification } from "../utils/notifications.js";
+
   import Timer from "tiny-timer";
   import { timers, controller } from "../store.js";
 
@@ -54,8 +56,13 @@
     currentId = currentId + 1;
 
     if (currentId < $timers.length) {
+      showNotification(
+        "The timer " + "'" + title + "'" + " has finished.",
+        "Starting the " + "'" + title + "'" + " timer"
+      );
       start();
     } else {
+      showNotification("All timers have been finished!", "NICE");
       stop();
     }
   });
@@ -116,10 +123,6 @@
     font-weight: 600;
   }
 
-  :global(.accent path) {
-    fill: #f15252 !important;
-  }
-
   .blink {
     animation: blinker 2s ease-in-out infinite;
   }
@@ -136,7 +139,7 @@
     {#if title !== '' && title !== null}
       <h1>{title}</h1>
     {:else}
-      <h3>Start Timeset</h3>
+      <h3>Start</h3>
     {/if}
   </div>
 

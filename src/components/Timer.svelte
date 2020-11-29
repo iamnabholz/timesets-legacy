@@ -4,7 +4,7 @@
   import Modal from "./Modal.svelte";
   import { timers, controller } from "../store.js";
 
-  import { DeleteIcon, EditIcon } from "svelte-mono-icons";
+  import { EditIcon } from "svelte-mono-icons";
 
   let modal;
 
@@ -17,17 +17,19 @@
     modal.show();
   }
 
-  let remove = id => {
-    timers.delete(id);
-  };
-
   $: if ($controller[0].running == false) {
     completed = false;
   }
 </script>
 
 <style>
+  .timer-container {
+    display: flex;
+    align-items: center;
+  }
+
   .timer {
+    flex-grow: 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,9 +46,15 @@
     font-weight: bold;
   }
 
+  .time-actions-container {
+    display: flex;
+    align-items: center;
+  }
+
   .time-text {
     font-size: 2em;
     font-weight: normal;
+    text-align: right;
   }
 
   .completed {
@@ -54,47 +62,56 @@
     color: gray;
   }
 
+  .actions {
+    padding-left: 1em;
+  }
+
   .action {
-    padding: 0.35em 0.35em 0 0;
-    background-color: transparent;
+    padding: 0.45em;
+    background-color: #f15252;
+    border-radius: 50%;
     border: 0;
+    line-height: 0;
+  }
+
+  :global(.accent path) {
+    fill: #e5e5e5 !important;
   }
 
   @media (prefers-color-scheme: dark) {
     .active {
       background-color: #202020;
     }
+
+    .completed {
+      background-color: #696969;
+      color: lightgray;
+    }
   }
 </style>
 
-<section
-  class="timer"
-  class:active={$controller[0].running && $controller[0].id == id}
-  class:completed
-  transition:slide={{ easing: expoInOut }}>
-  <section class="title">
+<div class="timer-container">
+  <section
+    class="timer"
+    class:active={$controller[0].running && $controller[0].id == id}
+    class:completed
+    transition:slide={{ easing: expoInOut }}>
+    <p class="title">
+      {#if $controller[0].running && $controller[0].id == id}>{/if}
+      {name}
+    </p>
 
-    {#if $controller[0].running && $controller[0].id == id}
-      <p>> {name}</p>
-    {:else}
-      <p>{name}</p>
-    {/if}
+    <div class="time-actions-container">
 
-    {#if $controller[0].running == false}
-      <section class="actions" transition:slide={{ y: 20, duration: 200 }}>
-        <button aria-label="Edit Timer" class="action" on:click={edit}>
-          <EditIcon size="18" />
-        </button>
-        <button
-          aria-label="Delete Timer"
-          class="action"
-          on:click={() => remove(id)}>
-          <DeleteIcon size="18" class="accent" />
-        </button>
-      </section>
-    {/if}
+      <p class="time-text">{time}:00</p>
+      {#if $controller[0].running == false}
+        <section class="actions" transition:slide>
+          <button aria-label="Edit Timer" class="action" on:click={edit}>
+            <EditIcon size="20" class="accent" />
+          </button>
+        </section>
+      {/if}
+    </div>
   </section>
-  <p class="time-text">{time}:00</p>
-</section>
-
+</div>
 <Modal bind:this={modal} {id} {name} {time} />

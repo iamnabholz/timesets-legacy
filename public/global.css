@@ -10,6 +10,7 @@ body {
 }
 
 body {
+	background-color: #fafafa;
 	color: #333;
 	border: 0;
 	box-sizing: border-box;
@@ -81,6 +82,7 @@ button:focus {
 }
 
 .card {
+	background-color: white;
 	margin: .4em 0;
 	width: 100%;
 	border-radius: 2;
@@ -101,8 +103,8 @@ button:focus {
 
 	.card {
 		background-color: #282828;
-		-webkit-box-shadow: 0px 0px 6px 0px rgba(240, 240, 240, 0.1);
-		-moz-box-shadow: 0px 0px 6px 0px rgba(240, 240, 240, 0.1);
-		box-shadow: 0px 0px 6px 0px rgba(240, 240, 240, 0.1);
+		-webkit-box-shadow: 0px 0px 6px 0px rgba(60, 60, 60, 0.1);
+		-moz-box-shadow: 0px 0px 6px 0px rgba(60, 60, 60, 0.1);
+		box-shadow: 0px 0px 6px 0px rgba(60, 60, 60, 0.1);
 	}
 }

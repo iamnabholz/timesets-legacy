@@ -1,12 +1,17 @@
 <script>
   import { fly, fade } from "svelte/transition";
   import { expoOut } from "svelte/easing";
+  import { onMount } from "svelte";
+
+  import { DeleteIcon } from "svelte-mono-icons";
 
   import { timers } from "../store.js";
 
   let shown = false;
   let form;
-  let valid;
+  let valid = false;
+
+  export let isNew = false;
 
   export function show() {
     shown = true;
@@ -15,7 +20,7 @@
   function cancel() {
     shown = false;
 
-    //reset();
+    reset();
   }
 
   function save() {
@@ -30,13 +35,16 @@
 
     timers.modify(timer);
 
-    //reset();
+    reset();
   }
 
   function reset() {
-    id = null;
-    name = "";
-    time = 15;
+    if (isNew) {
+      id = null;
+      name = "";
+      time = 15;
+      valid = false;
+    }
   }
 
   function validate() {
@@ -46,6 +54,10 @@
   export let id = null;
   export let name = "";
   export let time = 15;
+
+  let remove = id => {
+    timers.delete(id);
+  };
 </script>
 
 <style>
@@ -67,11 +79,12 @@
     transform: translate(-50%, -50%);
     background-color: #fefefe;
     padding: 2em 2em;
-    border-radius: 2;
-    width: 380px;
+    border-radius: 5px;
+    width: min(95%, 400px);
   }
 
   h1 {
+    font-size: 1.6em;
     padding-bottom: 0.8em;
   }
 
@@ -85,11 +98,21 @@
   }
 
   .buttons {
+    display: flex;
     padding-top: 3em;
   }
 
-  button {
+  .buttons button {
     min-width: 100px;
+    width: 100%;
+  }
+
+  .timer-delete-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2em 0 0.6em 0;
+    text-align: left;
   }
 
   @media only screen and (max-width: 580px) {
@@ -114,7 +137,7 @@
       in:fly={{ y: 200, duration: 250, delay: 50, easing: expoOut }}
       out:fly={{ y: 200, duration: 250, easing: expoOut }}>
       <form id="timer-form" bind:this={form}>
-        <h1>Setting Timer</h1>
+        <h1>Timer Options</h1>
         <label for="name">Timer Name</label>
         <input
           required
@@ -147,15 +170,41 @@
           title="Number between 1 and 60." />
 
         <section class="buttons">
-          <button type="reset" on:click|once={cancel}>Cancel</button>
+          <button
+            type="reset"
+            on:click|once={() => {
+              cancel();
+            }}>
+            Cancel
+          </button>
+          <div style="height: 100%; width: 10px;" />
           <button
             disabled={!valid}
             type="submit"
-            on:click|once|preventDefault={save}>
+            on:click|once|preventDefault={() => {
+              save();
+            }}>
             Save
           </button>
         </section>
       </form>
+
+      {#if !isNew}
+        <section class="timer-delete-container">
+          <p>
+            Delete your timer.
+            <br />
+            This can't be undone.
+          </p>
+          <button
+            type="button"
+            on:click|once={() => {
+              remove(id);
+            }}>
+            <DeleteIcon size="20" class="accent" />
+          </button>
+        </section>
+      {/if}
     </section>
   </div>
 {/if}

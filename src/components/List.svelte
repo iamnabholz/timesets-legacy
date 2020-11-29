@@ -113,4 +113,4 @@
   </section>
 </main>
 
-<Modal bind:this={modal} id={timerId} name={''} time={20} />
+<Modal bind:this={modal} id={timerId} name={''} time={20} isNew={true} />

@@ -1,4 +1,4 @@
-var cacheName = "timesets-cache-" + Date.now();
+var cacheName = "timesets-cache-v1.1.00001";
 
 var filesToCache = [
     "/",
@@ -14,6 +14,7 @@ var filesToCache = [
 ];
 
 self.addEventListener("install", function (e) {
+    self.skipWaiting();
     e.waitUntil(
         caches.open(cacheName).then(function (cache) {
             return cache.addAll(filesToCache);
@@ -34,6 +35,7 @@ self.addEventListener("activate", e => {
         })
     );
 });
+
 self.addEventListener("fetch", e => {
     e.respondWith(
         (async function () {
