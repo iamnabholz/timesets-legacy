@@ -66,14 +66,6 @@
     padding-left: 1em;
   }
 
-  .action {
-    padding: 0.45em;
-    background-color: #f15252;
-    border-radius: 50%;
-    border: 0;
-    line-height: 0;
-  }
-
   :global(.accent path) {
     fill: #e5e5e5 !important;
   }

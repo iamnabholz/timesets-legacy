@@ -139,7 +139,7 @@
     {#if title !== '' && title !== null}
       <h1>{title}</h1>
     {:else}
-      <h3>Start</h3>
+      <h3>Ready</h3>
     {/if}
   </div>
 
@@ -150,13 +150,13 @@
       disabled={$controller[0].running == true ? false : true}
       type="image"
       on:click={stop}
-      src="/icons/stop-active.svg"
+      src="/assets/stop-active.svg"
       alt="Stop timer." />
 
     <input
       type="image"
       on:click={start}
-      src={'/icons/' + iconToShow + '.svg'}
+      src={'/assets/' + iconToShow + '.svg'}
       alt="Start or pause timer." />
 
   </section>

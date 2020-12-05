@@ -3,7 +3,7 @@
   import { expoOut } from "svelte/easing";
   import { onMount } from "svelte";
 
-  import { DeleteIcon } from "svelte-mono-icons";
+  import { DeleteIcon, AddIcon, RemoveIcon } from "svelte-mono-icons";
 
   import { timers } from "../store.js";
 
@@ -58,6 +58,14 @@
   let remove = id => {
     timers.delete(id);
   };
+
+  const buttonTimerUpdate = add => {
+    if (add === true && time < 60) {
+      time = time + 1;
+    } else if (add === false && time > 1) {
+      time = time - 1;
+    }
+  };
 </script>
 
 <style>
@@ -74,7 +82,7 @@
   }
   .modal {
     position: absolute;
-    top: 50%;
+    top: 36%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fefefe;
@@ -85,11 +93,10 @@
 
   h1 {
     font-size: 1.6em;
-    padding-bottom: 0.8em;
   }
 
   label {
-    padding: 1em 0 0.5em 0;
+    padding: 2em 0 0.5em 0;
     text-align: left;
   }
 
@@ -97,7 +104,18 @@
     width: 100%;
   }
 
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .time-input-container {
+    display: flex;
+    align-items: center;
+  }
+
   .buttons {
+    width: 100%;
     display: flex;
     padding-top: 3em;
   }
@@ -113,6 +131,10 @@
     justify-content: space-between;
     padding: 2em 0 0.6em 0;
     text-align: left;
+  }
+
+  .action {
+    margin-left: 1em;
   }
 
   @media only screen and (max-width: 580px) {
@@ -136,9 +158,13 @@
       class="modal card"
       in:fly={{ y: 200, duration: 250, delay: 50, easing: expoOut }}
       out:fly={{ y: 200, duration: 250, easing: expoOut }}>
+      <h1>
+        {#if isNew}Create{:else}Edit{/if}
+        Timer
+      </h1>
+
       <form id="timer-form" bind:this={form}>
-        <h1>Timer Options</h1>
-        <label for="name">Timer Name</label>
+        <label for="name">Name</label>
         <input
           required
           autocomplete="off"
@@ -154,20 +180,40 @@
           placeholder="Design, Break, Research..."
           title="Name can´t be empty." />
 
-        <label for="number">Timer Duration (1-60)</label>
-        <input
-          required
-          autocomplete="off"
-          name="number"
-          type="text"
-          pattern="[1-9]|[0-5][0-9]|60\d*"
-          bind:value={time}
-          on:keyup={() => {
-            validate();
-          }}
-          maxlength="2"
-          placeholder="Time in minutes"
-          title="Number between 1 and 60." />
+        <label for="number">Duration (1 to 60 Minutes)</label>
+        <div class="time-input-container">
+          <input
+            required
+            autocomplete="off"
+            name="number"
+            type="text"
+            pattern="[1-9]|[0-5][0-9]|60\d*"
+            bind:value={time}
+            on:keyup={() => {
+              validate();
+            }}
+            maxlength="2"
+            placeholder="Time in minutes"
+            title="Number between 1 and 60." />
+
+          <button
+            aria-label="Reduce Time"
+            class="action"
+            on:click|preventDefault={() => {
+              buttonTimerUpdate(false);
+            }}>
+            <RemoveIcon size="20" class="accent" />
+          </button>
+
+          <button
+            aria-label="Add Time"
+            class="action"
+            on:click|preventDefault={() => {
+              buttonTimerUpdate(true);
+            }}>
+            <AddIcon size="20" class="accent" />
+          </button>
+        </div>
 
         <section class="buttons">
           <button

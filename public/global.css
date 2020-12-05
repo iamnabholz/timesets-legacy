@@ -81,6 +81,14 @@ button:focus {
 	border-color: #AE3535;
 }
 
+.action {
+	padding: 0.45em;
+	background-color: #f15252;
+	border-radius: 50%;
+	border: 0;
+	line-height: 0;
+}
+
 .card {
 	background-color: white;
 	margin: .4em 0;

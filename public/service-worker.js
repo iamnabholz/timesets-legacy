@@ -1,4 +1,4 @@
-var cacheName = "timesets-cache-v1.1.00001";
+var cacheName = "timesets-cache-v1.1.00031";
 
 var filesToCache = [
     "/",
@@ -7,9 +7,10 @@ var filesToCache = [
     "/main.js",
     "/build/bundle.js",
     "/build/bundle.css",
-    "/icons/pause.svg",
-    "/icons/start.svg",
-    "/icons/stop-active.svg",
+    "/assets/pause.svg",
+    "/assets/start.svg",
+    "/assets/stop-active.svg",
+    "/assets/now-sound.ogg",
     "https://fonts.googleapis.com/css2?family=Open+Sans&family=Manrope:wght@400;600;700&display=swap"
 ];
 

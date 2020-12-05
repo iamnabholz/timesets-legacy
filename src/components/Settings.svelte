@@ -14,13 +14,11 @@
 
   let soundsEnabled = true;
   if (localStorage.getItem("soun") !== null) {
-    if (localStorage.getItem("soun") === "true") {
+    if (localStorage.getItem("soun") === "false") {
       soundsEnabled = false;
-    } else {
-      soundsEnabled = true;
     }
   } else {
-    localStorage.setItem("soun", "false");
+    localStorage.setItem("soun", "true");
   }
 
   function changeNotificationSettings() {
@@ -142,9 +140,9 @@
       bind:checked={soundsEnabled}
       on:change={() => {
         if (soundsEnabled) {
-          localStorage.setItem('soun', 'false');
-        } else {
           localStorage.setItem('soun', 'true');
+        } else {
+          localStorage.setItem('soun', 'false');
         }
       }}
       type="checkbox"
