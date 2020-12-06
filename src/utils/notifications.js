@@ -1,11 +1,8 @@
-const audio = new Audio();
-
-audio.play();
+const audio = new Audio('/assets/now-sound.ogg');
 
 export function showNotification(notificationTitle, notificationBody) {
 
     if (localStorage.getItem("soun") === "true") {
-        audio.src = '/assets/now-sound.ogg';
         audio.play();
     }
 

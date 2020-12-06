@@ -5,6 +5,12 @@
   import Modal from "./Modal.svelte";
   import { timers, controller } from "../store.js";
 
+  import { SettingsIcon } from "svelte-mono-icons";
+
+  import Settings from "./Settings.svelte";
+
+  let settings;
+
   let modal;
   let timerId = 9;
   const date = new Date();
@@ -86,7 +92,14 @@
 <main class="card">
   <section class="timers-header">
 
-    <p>{$controller[0].status}</p>
+    <button
+      aria-label="Open Settings"
+      class="action"
+      on:click={() => {
+        settings.showOptions();
+      }}>
+      <SettingsIcon size="22" class="accent" />
+    </button>
 
     <button
       disabled={$controller[0].running}
@@ -114,3 +127,4 @@
 </main>
 
 <Modal bind:this={modal} id={timerId} name={''} time={15} isNew={true} />
+<Settings bind:this={settings} />

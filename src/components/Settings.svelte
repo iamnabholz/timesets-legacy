@@ -1,4 +1,9 @@
 <script>
+  import { fly, fade } from "svelte/transition";
+  import { expoOut } from "svelte/easing";
+
+  import { timers } from "../store.js";
+
   import { showNotification } from "../utils/notifications.js";
   function isDenied() {
     return (
@@ -6,6 +11,14 @@
       Notification.permission === "default"
     );
   }
+
+  const audio = new Audio();
+
+  let shown = false;
+
+  export const showOptions = () => {
+    shown = true;
+  };
 
   let notificationsEnabled = false;
   if (localStorage.getItem("notis") !== null && !isDenied()) {
@@ -44,18 +57,21 @@
 </script>
 
 <style>
-  .card {
-    padding: 1em 0;
+  .settings-card {
+    padding-top: 1em;
     text-align: left;
     display: grid;
-    align-items: center;
-    justify-content: center;
-    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(5, auto);
   }
-
-  /* Customize the label (the container) */
-  .container {
-    padding-left: 1em;
+  h1 {
+    font-size: 1.6em;
+  }
+  p {
+    padding: 0 0 2em 2.6em;
+    color: grey;
+  }
+  /* Customize the label (the checkbox-container) */
+  .checkbox-container {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -67,7 +83,7 @@
   }
 
   /* Hide the browser's default checkbox */
-  .container input {
+  .checkbox-container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -86,12 +102,12 @@
   }
 
   /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
+  .checkbox-container:hover input ~ .checkmark {
     background-color: #ccc;
   }
 
   /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
+  .checkbox-container input:checked ~ .checkmark {
     background-color: #f15252;
   }
 
@@ -103,12 +119,12 @@
   }
 
   /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
+  .checkbox-container input:checked ~ .checkmark:after {
     display: block;
   }
 
   /* Style the checkmark/indicator */
-  .container .checkmark:after {
+  .checkbox-container .checkmark:after {
     left: 7px;
     top: 3px;
     width: 5px;
@@ -119,38 +135,116 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+  button {
+    margin: 0.4em 0;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    transition: 0.1s linear;
+  }
+
+  a:hover {
+    transform: translate(-1px, -1px);
+    text-decoration: underline;
+  }
+
+  .support-information {
+    padding-top: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 </style>
 
-<main class="card">
-  {#if 'Notification' in window}
-    <label class="container">
-      <input
-        bind:checked={notificationsEnabled}
-        on:change={() => {
-          changeNotificationSettings();
-        }}
-        type="checkbox"
-        id="notifications"
-        name="notifications" />
-      <span class="checkmark" />
-      Notifications
-    </label>
-  {/if}
+{#if shown}
+  <div
+    class="modal-background"
+    in:fade={{ duration: 50 }}
+    out:fade={{ delay: 50, duration: 100 }}>
+    <section
+      class="modal card"
+      in:fly={{ y: 200, duration: 250, delay: 50, easing: expoOut }}
+      out:fly={{ y: 200, duration: 250, easing: expoOut }}>
+      <h1>Settings</h1>
+      <div class="settings-card">
+        {#if 'Notification' in window}
+          <label class="checkbox-container">
+            <input
+              bind:checked={notificationsEnabled}
+              on:change={() => {
+                changeNotificationSettings();
+              }}
+              type="checkbox"
+              id="notifications"
+              name="notifications" />
+            <span class="checkmark" />
+            Notifications
+          </label>
+          <p>
+            Every time a timer is completed we will send you a notification.
+          </p>
+        {/if}
 
-  <label class="container">
-    <input
-      bind:checked={soundsEnabled}
-      on:change={() => {
-        if (soundsEnabled) {
-          localStorage.setItem('soun', 'true');
-        } else {
-          localStorage.setItem('soun', 'false');
-        }
-      }}
-      type="checkbox"
-      id="sounds"
-      name="sounds" />
-    <span class="checkmark" />
-    Sound
-  </label>
-</main>
+        <label class="checkbox-container">
+          <input
+            bind:checked={soundsEnabled}
+            on:change={() => {
+              if (soundsEnabled) {
+                localStorage.setItem('soun', 'true');
+                audio.play();
+              } else {
+                localStorage.setItem('soun', 'false');
+              }
+            }}
+            type="checkbox"
+            id="sounds"
+            name="sounds" />
+          <span class="checkmark" />
+          Sound
+        </label>
+        <p>Play a sound when a timer is completed.</p>
+
+        <button
+          on:click={() => {
+            timers.reset();
+            shown = false;
+          }}>
+          RESET TIMERS
+        </button>
+        <p style="padding: 0; text-align: center;">
+          This will replace all your created timers with the defaults.
+        </p>
+
+        <button
+          style="margin-top: 2em;"
+          on:click={() => {
+            shown = false;
+          }}>
+          CLOSE
+        </button>
+      </div>
+
+      <div class="support-information">
+        <span>
+          by
+          <a href="https://nabholz.work/" target="_blank">
+            nabholz.work &#8599;&#xFE0E;
+          </a>
+        </span>
+        <a href="https://ko-fi.com/Z8Z82TKAA" target="_blank">
+          <img
+            height="36"
+            style="border:0px;height:36px;"
+            src="https://cdn.ko-fi.com/cdn/kofi3.png?v=2"
+            border="0"
+            alt="Buy Me a Coffee at ko-fi.com" />
+        </a>
+      </div>
+      <p style="padding: 1em 0 0 0; text-align: center;">TIMESETS v1.1.0</p>
+
+    </section>
+  </div>
+{/if}

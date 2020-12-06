@@ -1,7 +1,6 @@
 <script>
   import Controller from "./components/Controller.svelte";
   import List from "./components/List.svelte";
-  import Settings from "./components/Settings.svelte";
 
   import { controller } from "./store.js";
 
@@ -81,7 +80,6 @@
     <section class="app">
       <section class="controls">
         <Controller />
-        <Settings />
       </section>
       <List />
     </section>

@@ -163,6 +163,10 @@
       src={'/assets/' + iconToShow + '.svg'}
       alt="Start or pause timer." />
 
+    <p style="padding-left: 1em; text-transform: capitalize;">
+      {$controller[0].status}
+    </p>
+
   </section>
 </main>
 

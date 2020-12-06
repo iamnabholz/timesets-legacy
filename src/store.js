@@ -52,6 +52,14 @@ function timerStore() {
 
                 return state;
             });
+        },
+        reset() {
+            update(state => {
+                state = defaults;
+                localStorage.setItem("tim", JSON.stringify(state));
+
+                return state;
+            });
         }
     }
 

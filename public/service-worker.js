@@ -1,4 +1,4 @@
-var cacheName = "timesets-cache-v1.1.00018";
+var cacheName = "timesets-cache-v1.1.00022";
 
 var filesToCache = [
     "/",
@@ -11,7 +11,8 @@ var filesToCache = [
     "/assets/start.svg",
     "/assets/stop-active.svg",
     "/assets/now-sound.ogg",
-    "https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400&family=Manrope:wght@400;600;700&display=swap"
+    "https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400&family=Manrope:wght@400;600;700&display=swap",
+    "https://cdn.ko-fi.com/cdn/kofi3.png?v=2"
 ];
 
 self.addEventListener("install", function (e) {

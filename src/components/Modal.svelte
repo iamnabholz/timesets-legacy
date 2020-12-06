@@ -69,28 +69,6 @@
 </script>
 
 <style>
-  .modal-background {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  .modal {
-    position: absolute;
-    top: 36%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fefefe;
-    padding: 2em 2em;
-    border-radius: 5px;
-    width: min(95%, 400px);
-  }
-
   h1 {
     font-size: 1.6em;
   }
@@ -142,17 +120,6 @@
 
   .action {
     margin-left: 1em;
-  }
-
-  @media only screen and (max-width: 580px) {
-    .modal {
-      width: 80%;
-    }
-  }
-  @media (prefers-color-scheme: dark) {
-    .modal {
-      background-color: #282828;
-    }
   }
 </style>
 
