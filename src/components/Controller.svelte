@@ -114,6 +114,7 @@
   }
 
   h3 {
+    width: 100%;
     opacity: 0.6;
     font-style: italic;
     font-size: 1.4em;
