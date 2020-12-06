@@ -63,13 +63,16 @@
     display: grid;
     grid-template-rows: repeat(5, auto);
   }
+
   h1 {
     font-size: 1.6em;
   }
+
   p {
     padding: 0 0 2em 2.6em;
     color: grey;
   }
+
   /* Customize the label (the checkbox-container) */
   .checkbox-container {
     display: flex;
@@ -141,7 +144,7 @@
   }
 
   a {
-    color: white;
+    color: #202020;
     text-decoration: none;
     transition: 0.1s linear;
   }
@@ -156,6 +159,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    a {
+      color: white;
+    }
   }
 </style>
 
@@ -243,7 +252,7 @@
             alt="Buy Me a Coffee at ko-fi.com" />
         </a>
       </div>
-      <p style="padding: 1em 0 0 0; text-align: center;">TIMESETS v1.1.0</p>
+      <p style="padding: 1em 0 0 0; text-align: center;">TIMESETS v1.1.12</p>
 
     </section>
   </div>

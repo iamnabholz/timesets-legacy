@@ -130,7 +130,7 @@ button:focus {
 
 .modal {
 	position: absolute;
-	top: 36%;
+	top: 44%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-color: #fefefe;
