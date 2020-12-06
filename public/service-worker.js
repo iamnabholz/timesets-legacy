@@ -1,4 +1,4 @@
-var cacheName = "timesets-cache-v1.1.00034";
+var cacheName = "timesets-cache-v1.1.00014";
 
 var filesToCache = [
     "/",
@@ -11,7 +11,7 @@ var filesToCache = [
     "/assets/start.svg",
     "/assets/stop-active.svg",
     "/assets/now-sound.ogg",
-    "https://fonts.googleapis.com/css2?family=Open+Sans&family=Manrope:wght@400;600;700&display=swap"
+    "https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400&family=Manrope:wght@400;600;700&display=swap"
 ];
 
 self.addEventListener("install", function (e) {

@@ -110,7 +110,6 @@
 
   h1 {
     font-size: 2em;
-    font-weight: 600;
   }
 
   h3 {
@@ -123,7 +122,6 @@
 
   .time-text {
     font-size: 6em;
-    font-weight: 600;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;

@@ -107,7 +107,7 @@ button:focus {
 }
 
 .time-text {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
