@@ -30,6 +30,9 @@
     font-size: 2em;
     font-weight: 800;
     padding: 0.6em 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
   }
 
   .app-container {

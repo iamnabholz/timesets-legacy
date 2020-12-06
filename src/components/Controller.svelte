@@ -58,7 +58,7 @@
     if (currentId < $timers.length) {
       showNotification(
         "The timer " + "'" + title + "'" + " has finished.",
-        "Starting the " + "'" + title + "'" + " timer"
+        "Starting the next timer"
       );
       start();
     } else {
@@ -104,6 +104,7 @@
     min-height: 3.2em;
     display: flex;
     align-items: center;
+    overflow-x: visible;
   }
 
   h1 {
@@ -121,6 +122,9 @@
   .time-text {
     font-size: 6em;
     font-weight: 600;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
   }
 
   .blink {

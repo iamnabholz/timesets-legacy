@@ -9,9 +9,9 @@
 
   let shown = false;
   let form;
-  let valid = false;
 
   export let isNew = false;
+  let valid = !isNew;
 
   export function show() {
     shown = true;
@@ -98,6 +98,13 @@
   label {
     padding: 2em 0 0.5em 0;
     text-align: left;
+  }
+
+  h1,
+  label {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
   }
 
   input {

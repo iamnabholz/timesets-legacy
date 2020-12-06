@@ -54,6 +54,10 @@ input:disabled {
 
 input[type="image"] {
 	border: none;
+	outline: none;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
 }
 
 button {
@@ -66,6 +70,9 @@ button {
 	cursor: pointer;
 	font-weight: 600;
 	text-transform: uppercase;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
 }
 
 button:disabled {
