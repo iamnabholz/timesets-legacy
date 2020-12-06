@@ -2,26 +2,28 @@ import {
     writable
 } from 'svelte/store';
 
+const defaults = [{
+        id: 2,
+        name: "Work Review",
+        time: 15,
+        completed: false
+    },
+    {
+        id: 3,
+        name: "Short Break",
+        time: 5,
+        completed: false
+    },
+    {
+        id: 4,
+        name: "Work Phase",
+        time: 25,
+        completed: false
+    }
+]
+
 function timerStore() {
-    const state = ([{
-            id: 2,
-            name: "Work Review",
-            time: 15,
-            completed: false
-        },
-        {
-            id: 3,
-            name: "Short Break",
-            time: 5,
-            completed: false
-        },
-        {
-            id: 4,
-            name: "Work Phase",
-            time: 25,
-            completed: false
-        },
-    ]);
+    const state = (JSON.parse(localStorage.getItem("tim")) || defaults);
     const {
         subscribe,
         set,
@@ -39,7 +41,8 @@ function timerStore() {
                     state[index] = data;
                 }
 
-                //console.log(state);
+                console.log(state);
+                localStorage.setItem("tim", JSON.stringify(state));
 
                 return state;
             });
@@ -48,7 +51,8 @@ function timerStore() {
             update(state => {
                 state = state.filter(state => state.id != id);
 
-                //console.log(state);
+                console.log(state);
+                localStorage.setItem("tim", JSON.stringify(state));
 
                 return state;
             });
@@ -65,10 +69,8 @@ function timerStore() {
 
 export const timers = timerStore();
 
-export const controller = writable([
-    {
+export const controller = writable([{
     id: null,
     running: false,
     status: "stopped"
-}
-]);
+}]);

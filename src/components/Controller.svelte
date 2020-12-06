@@ -102,9 +102,10 @@
 
   .timer-title {
     min-height: 3.2em;
+    width: 100%;
     display: flex;
     align-items: center;
-    overflow-x: visible;
+    justify-content: center;
   }
 
   h1 {
