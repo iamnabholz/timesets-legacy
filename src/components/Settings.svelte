@@ -121,22 +121,23 @@
 </style>
 
 <main class="card">
-  <label class="container" style="padding-left: 1em;">
-    <input
-      bind:checked={notificationsEnabled}
-      on:change={() => {
-        changeNotificationSettings();
-      }}
-      type="checkbox"
-      id="notifications"
-      name="notifications" />
-    <span class="checkmark" />
-    Notifications
-  </label>
+  {#if 'Notification' in window}
+    <label class="container" style="padding-left: 1em;">
+      <input
+        bind:checked={notificationsEnabled}
+        on:change={() => {
+          changeNotificationSettings();
+        }}
+        type="checkbox"
+        id="notifications"
+        name="notifications" />
+      <span class="checkmark" />
+      Notifications
+    </label>
+  {/if}
 
   <label class="container">
     <input
-      disabled={!notificationsEnabled}
       bind:checked={soundsEnabled}
       on:change={() => {
         if (soundsEnabled) {

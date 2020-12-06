@@ -40,8 +40,6 @@ function timerStore() {
                 } else {
                     state[index] = data;
                 }
-
-                console.log(state);
                 localStorage.setItem("tim", JSON.stringify(state));
 
                 return state;
@@ -50,8 +48,6 @@ function timerStore() {
         delete(id) {
             update(state => {
                 state = state.filter(state => state.id != id);
-
-                console.log(state);
                 localStorage.setItem("tim", JSON.stringify(state));
 
                 return state;
