@@ -81,9 +81,7 @@
     <section class="app">
       <section class="controls">
         <Controller />
-        {#if 'Notification' in window}
-          <Settings />
-        {/if}
+        <Settings />
       </section>
       <List />
     </section>
