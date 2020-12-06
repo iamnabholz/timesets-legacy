@@ -55,6 +55,7 @@
 
   /* Customize the label (the container) */
   .container {
+    padding-left: 1em;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -122,7 +123,7 @@
 
 <main class="card">
   {#if 'Notification' in window}
-    <label class="container" style="padding-left: 1em;">
+    <label class="container">
       <input
         bind:checked={notificationsEnabled}
         on:change={() => {
