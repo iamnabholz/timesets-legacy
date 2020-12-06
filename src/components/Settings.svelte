@@ -219,7 +219,8 @@
         <button
           on:click={() => {
             timers.reset();
-            shown = false;
+            location.reload();
+            return false;
           }}>
           RESET TIMERS
         </button>
