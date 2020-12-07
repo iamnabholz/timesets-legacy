@@ -49,6 +49,9 @@
   }
 
   @media only screen and (max-width: 800px) {
+    main {
+      width: min(96%, 480px);
+    }
     .app {
       flex-direction: column;
     }
