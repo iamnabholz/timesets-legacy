@@ -19,8 +19,10 @@
 
 <style>
   main {
-    padding: 1em;
+    padding: 0;
     text-align: center;
+    width: min(96%, 920px);
+    margin: 0 auto;
   }
 
   h1 {
@@ -34,12 +36,6 @@
     -moz-user-select: none;
   }
 
-  .app-container {
-    display: grid;
-    grid-template-columns: 60%;
-    justify-content: center;
-  }
-
   .app {
     display: flex;
     align-items: flex-start;
@@ -50,18 +46,6 @@
     flex-direction: column;
     width: 100%;
     margin-right: 0.8em;
-  }
-
-  @media only screen and (max-width: 1680px) {
-    .app-container {
-      grid-template-columns: 75%;
-    }
-  }
-
-  @media only screen and (max-width: 1050px) {
-    .app-container {
-      grid-template-columns: 100%;
-    }
   }
 
   @media only screen and (max-width: 800px) {
