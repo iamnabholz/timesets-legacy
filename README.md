@@ -7,6 +7,6 @@
 
 # Screenshots
 
-![Timesets Screenshot]("/repo/screenshot-1.png")
+![Timesets Screenshot](/repo/screenshot-1.png)
 ![Timesets Screenshot](/repo/screenshot-2.png)
-![Timesets Screenshot](repo/screenshot-3.png)
+![Timesets Screenshot](/repo/screenshot-3.png)
