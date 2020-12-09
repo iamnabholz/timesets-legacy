@@ -1,4 +1,4 @@
-const sound = '/assets/now-sound.ogg';
+const sound = '/assets/now-sound.mp3';
 
 function play() {
     const audio = new Audio(sound);

@@ -1,4 +1,4 @@
-var cacheName = "timesets-cache-v1.1.00027";
+var cacheName = "timesets-cache-v1.1.00028";
 
 var filesToCache = [
     "/",
@@ -10,7 +10,7 @@ var filesToCache = [
     "/assets/pause.svg",
     "/assets/start.svg",
     "/assets/stop-active.svg",
-    "/assets/now-sound.ogg",
+    "/assets/now-sound.mp3",
     "https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400&family=Manrope:wght@400;600;700&display=swap",
     "https://cdn.ko-fi.com/cdn/kofi3.png?v=2"
 ];
