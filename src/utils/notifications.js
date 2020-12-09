@@ -1,35 +1,18 @@
-let yodelBuffer;
+const sound = '/assets/now-sound.ogg';
 
-if ('AudioContext' in window || 'webkitAudioContext' in window) {
-    // Check for the web audio API. Safari requires the webkit prefix.
-    const URL = '/assets/now-sound.ogg';
-
-    var AudioContext = window.AudioContext || window.webkitAudioContext;
-    var context = new AudioContext(); // Make it crossbrowser    
-
-    window.fetch(URL)
-        .then(response => response.arrayBuffer())
-        .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
-        .then(audioBuffer => {
-            yodelBuffer = audioBuffer;
-        });
-}
-
-function play(audioBuffer) {
-    const source = context.createBufferSource();
-    source.buffer = audioBuffer;
-    source.connect(context.destination);
-    source.start();
+function play() {
+    const audio = new Audio(sound);
+    audio.play();
 }
 
 export function playSound() {
-    play(yodelBuffer);
+    play();
 }
 
 export function showNotification(notificationTitle, notificationBody) {
 
     if (localStorage.getItem("soun") === "true") {
-        play(yodelBuffer);
+        play();
     }
 
 
