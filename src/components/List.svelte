@@ -19,7 +19,7 @@
 
   function newTimer() {
     timerId = newId();
-    modal.show();
+    modal.show(true, timerId);
   }
 
   function newId() {
@@ -126,5 +126,6 @@
   </section>
 </main>
 
-<Modal bind:this={modal} id={timerId} name={''} time={15} isNew={true} />
+<Modal bind:this={modal} />
+
 <Settings bind:this={settings} />

@@ -10,17 +10,25 @@
   let shown = false;
   let form;
 
-  export let isNew = false;
+  let id = null;
+  let name = "";
+  let time = 15;
+  let isNew = false;
   let valid = !isNew;
 
-  export function show() {
+  export function show(newTimer, timerId, timerName, timerDuration) {
+    isNew = newTimer;
+    id = timerId;
+    if (!isNew) {
+      name = timerName;
+      time = timerDuration;
+    }
+
     shown = true;
   }
 
   function cancel() {
     shown = false;
-
-    reset();
   }
 
   function save() {
@@ -34,32 +42,18 @@
     };
 
     timers.modify(timer);
-
-    reset();
-  }
-
-  function reset() {
-    if (isNew) {
-      id = null;
-      name = "";
-      time = 15;
-      valid = false;
-    }
   }
 
   function validate() {
     valid = form.reportValidity();
   }
 
-  export let id = null;
-  export let name = "";
-  export let time = 15;
-
   let remove = id => {
     timers.delete(id);
   };
 
   const buttonTimerUpdate = add => {
+    time = parseInt(time);
     if (add === true && time < 60) {
       time = time + 1;
     } else if (add === false && time > 1) {
@@ -144,12 +138,11 @@
           autocomplete="off"
           name="name"
           type="text"
-          pattern=".*\S+.*"
           bind:value={name}
           on:keyup={() => {
             validate();
           }}
-          minlength="1"
+          minlength="2"
           maxlength="32"
           placeholder="Design, Break, Research..."
           title="Name can´t be empty." />

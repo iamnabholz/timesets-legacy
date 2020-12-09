@@ -14,7 +14,7 @@
   export let completed = false;
 
   function edit() {
-    modal.show();
+    modal.show(false, id, name, time);
   }
 
   $: if ($controller[0].running == false) {
@@ -106,4 +106,5 @@
     </div>
   </section>
 </div>
-<Modal bind:this={modal} {id} {name} {time} />
+
+<Modal bind:this={modal} />

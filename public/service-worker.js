@@ -1,4 +1,4 @@
-var cacheName = "timesets-cache-v1.1.00026";
+var cacheName = "timesets-cache-v1.1.00027";
 
 var filesToCache = [
     "/",

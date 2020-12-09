@@ -4,15 +4,13 @@
 
   import { timers } from "../store.js";
 
-  import { showNotification } from "../utils/notifications.js";
+  import { showNotification, playSound } from "../utils/notifications.js";
   function isDenied() {
     return (
       Notification.permission === "denied" ||
       Notification.permission === "default"
     );
   }
-
-  const audio = new Audio();
 
   let shown = false;
 
@@ -203,7 +201,7 @@
             on:change={() => {
               if (soundsEnabled) {
                 localStorage.setItem('soun', 'true');
-                audio.play();
+                playSound();
               } else {
                 localStorage.setItem('soun', 'false');
               }
