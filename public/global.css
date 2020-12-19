@@ -2,6 +2,38 @@
 	margin: 0;
 }
 
+@font-face {
+	font-family: 'Manrope';
+	src: url('Manrope-Bold.woff2') format('woff2'),
+		url('Manrope-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Titillium Web';
+	src: url('TitilliumWeb-Regular.woff2') format('woff2'),
+		url('TitilliumWeb-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Manrope';
+	src: url('Manrope-SemiBold.woff2') format('woff2'),
+		url('Manrope-SemiBold.woff') format('woff');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Manrope';
+	src: url('Manrope-Regular.woff2') format('woff2'),
+		url('Manrope-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 html,
 body {
 	position: relative;
