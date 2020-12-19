@@ -1,8 +1,12 @@
 {
-    "name": "Timesets",
+    "name": "Timesets App",
     "short_name": "Timesets",
-    "icons": [
-        {
+    "theme_color": "#202020",
+    "background_color": "#f15252",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/index.html",
+    "icons": [{
             "src": "/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
@@ -19,7 +23,5 @@
             "purpose": "any maskable"
         }
     ],
-    "theme_color": "#f15252",
-    "background_color": "#f15252",
-    "display": "standalone"
+    "splash_pages": null
 }
