@@ -29,7 +29,7 @@
     color: #f15252;
     text-transform: uppercase;
     font-size: 2em;
-    font-weight: 800;
+    font-weight: bold;
     padding: 0.6em 0;
     user-select: none;
     -webkit-user-select: none;
