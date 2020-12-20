@@ -1,4 +1,4 @@
-var cacheName = "timesets-cache-v1.1.00032";
+var cacheName = "timesets-cache-v1.1.00033";
 
 var filesToCache = [
     "/",
@@ -11,12 +11,7 @@ var filesToCache = [
     "/assets/start.svg",
     "/assets/stop-active.svg",
     "/assets/now-sound.mp3",
-    "/font/Manrope-Regular.woff",
-    "/font/Manrope-Regular.woff2",
-    "/font/Manrope-SemiBold.woff",
-    "/font/Manrope-SemiBold.woff2",
-    "/font/Manrope-Bold.woff",
-    "/font/Manrope-Bold.woff2",
+    "/font/Manrope-VariableFont_wght.woff",
     "/font/TitilliumWeb-Regular.woff",
     "/font/TitilliumWeb-Regular.woff2",
     "https://cdn.ko-fi.com/cdn/kofi3.png?v=2"

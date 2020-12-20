@@ -4,32 +4,13 @@
 
 @font-face {
 	font-family: 'Manrope';
-	src: url('/font/Manrope-Bold.woff2') format('woff2'),
-		url('/font/Manrope-Bold.woff') format('woff');
-	font-weight: bold;
-	font-style: normal;
+	src: url('font/Manrope-VariableFont_wght.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'Titillium Web';
-	src: url('/font/TitilliumWeb-Regular.woff2') format('woff2'),
-		url('/font/TitilliumWeb-Regular.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Manrope';
-	src: url('/font/Manrope-SemiBold.woff2') format('woff2'),
-		url('/font/Manrope-SemiBold.woff') format('woff');
-	font-weight: 600;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Manrope';
-	src: url('/font/Manrope-Regular.woff2') format('woff2'),
-		url('/font/Manrope-Regular.woff') format('woff');
+	src: url('font/TitilliumWeb-Regular.woff2') format('woff2'),
+		url('font/TitilliumWeb-Regular.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
