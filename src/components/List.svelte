@@ -13,7 +13,6 @@
 
   let modal;
   let timerId = 9;
-  const date = new Date();
 
   let createdIds = [2, 3];
 
@@ -25,7 +24,7 @@
   function newId() {
     let number;
     number = Math.floor(
-      Math.random() * date.getMilliseconds() * date.getSeconds()
+      Math.random() * new Date.getMilliseconds() * new Date.getSeconds()
     );
     if (createdIds.includes(number)) {
       return newId();

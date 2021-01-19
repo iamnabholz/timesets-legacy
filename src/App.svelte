@@ -1,6 +1,7 @@
 <script>
   import Controller from "./components/Controller.svelte";
   import List from "./components/List.svelte";
+  import Tutorial from "./components/Tutorial.svelte";
 
   import { controller } from "./store.js";
 
@@ -72,5 +73,7 @@
     </section>
   </div>
 </main>
+
+<Tutorial />
 
 <svelte:window on:beforeunload={beforeUnload} />

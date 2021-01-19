@@ -173,8 +173,8 @@
     out:fade={{ delay: 50, duration: 100 }}>
     <section
       class="modal card"
-      in:fly={{ y: 200, duration: 250, delay: 50, easing: expoOut }}
-      out:fly={{ y: 200, duration: 250, easing: expoOut }}>
+      in:fly={{ y: 160, duration: 250, delay: 50, easing: expoOut }}
+      out:fly={{ y: 160, duration: 250, easing: expoOut }}>
       <h1>Settings</h1>
       <div class="settings-card">
         {#if 'Notification' in window}
@@ -193,26 +193,26 @@
           <p>
             Every time a timer is completed we will send you a notification.
           </p>
-        {/if}
 
-        <label class="checkbox-container">
-          <input
-            bind:checked={soundsEnabled}
-            on:change={() => {
-              if (soundsEnabled) {
-                localStorage.setItem('soun', 'true');
-                playSound();
-              } else {
-                localStorage.setItem('soun', 'false');
-              }
-            }}
-            type="checkbox"
-            id="sounds"
-            name="sounds" />
-          <span class="checkmark" />
-          Sound
-        </label>
-        <p>Play a sound when a timer is completed.</p>
+          <label class="checkbox-container">
+            <input
+              bind:checked={soundsEnabled}
+              on:change={() => {
+                if (soundsEnabled) {
+                  localStorage.setItem('soun', 'true');
+                  playSound();
+                } else {
+                  localStorage.setItem('soun', 'false');
+                }
+              }}
+              type="checkbox"
+              id="sounds"
+              name="sounds" />
+            <span class="checkmark" />
+            Sound
+          </label>
+          <p>Play a sound when a timer is completed.</p>
+        {/if}
 
         <button
           on:click={() => {
