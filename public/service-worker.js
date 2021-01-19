@@ -1,4 +1,4 @@
-var cacheName = "timesets-cache-v1.1.00036";
+var cacheName = "timesets-cache-" + Date.now();
 
 var filesToCache = [
     "/",
@@ -15,8 +15,7 @@ var filesToCache = [
     "/font/Manrope-Regular.woff2",
     "/font/TitilliumWeb-Regular.woff",
     "/font/TitilliumWeb-Regular.woff2",
-    "https://cdn.ko-fi.com/cdn/kofi3.png?v=2",
-    "https://microanalytics.io/js/script.js"
+    "https://cdn.ko-fi.com/cdn/kofi3.png?v=2"
 ];
 
 self.addEventListener("install", function (e) {
