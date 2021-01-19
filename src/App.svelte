@@ -74,6 +74,6 @@
   </div>
 </main>
 
-<Tutorial />
+<!-- <Tutorial /> -->
 
 <svelte:window on:beforeunload={beforeUnload} />
