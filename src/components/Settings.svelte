@@ -251,7 +251,7 @@
             alt="Buy Me a Coffee at ko-fi.com" />
         </a>
       </div>
-      <p style="padding: 1em 0 0 0; text-align: center;">TIMESETS v1.1.12</p>
+      <p style="padding: 1em 0 0 0; text-align: center;">TIMESETS v1.2.1</p>
 
     </section>
   </div>

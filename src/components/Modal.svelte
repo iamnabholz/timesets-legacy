@@ -22,6 +22,9 @@
     if (!isNew) {
       name = timerName;
       time = timerDuration;
+    } else {
+      name = "";
+      time = 15;
     }
 
     shown = true;
@@ -36,7 +39,7 @@
 
     const timer = {
       id: id,
-      name: name,
+      name: name.trim(),
       time: parseInt(time, 10),
       completed: false
     };

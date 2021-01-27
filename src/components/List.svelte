@@ -15,7 +15,7 @@
   let timerId = 9;
 
   const newTimer = () => {
-    timerId = new Date.now();
+    timerId = Date.now();
     modal.show(true, timerId);
   };
 
