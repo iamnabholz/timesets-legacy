@@ -15,7 +15,6 @@ export function showNotification(notificationTitle, notificationBody) {
         play();
     }
 
-
     if ('Notification' in window && localStorage.getItem("notis") === "true") {
         var notification = new Notification(
             notificationTitle || "Notifications have been enabled", {

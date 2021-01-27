@@ -16,10 +16,10 @@
 
   let createdIds = [2, 3];
 
-  function newTimer() {
+  const newTimer = () => {
     timerId = newId();
     modal.show(true, timerId);
-  }
+  };
 
   function newId() {
     let number;
