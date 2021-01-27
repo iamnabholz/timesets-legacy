@@ -14,24 +14,10 @@
   let modal;
   let timerId = 9;
 
-  let createdIds = [2, 3];
-
   const newTimer = () => {
-    timerId = newId();
+    timerId = new Date.now();
     modal.show(true, timerId);
   };
-
-  function newId() {
-    let number;
-    number = Math.floor(
-      Math.random() * new Date.getMilliseconds() * new Date.getSeconds()
-    );
-    if (createdIds.includes(number)) {
-      return newId();
-    }
-    createdIds = createdIds.concat(number);
-    return number;
-  }
 
   $: timeMap = $timers.map(a => a.time);
   $: getTime(timeMap);
