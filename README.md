@@ -1,6 +1,6 @@
-# TIMESETS APP
+# TIMESETS APP LEGACY
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/cef9dd76-16b4-4549-b942-417b4e39d02e/deploy-status)](https://app.netlify.com/sites/timesets/deploys)
+Note: this project is no longer mantained, I decided to rework Timesets from scratch, you can find the [new repository here](https://github.com/iamnabholz/timesets-app) 
 
 [Go To The App](https://timesets.netlify.app)
 
